@@ -1,4 +1,4 @@
-// CODE ajoutée par moi
+// CODE ajoutée par moi.
 function refresh() {
   
   location.reload(true);
