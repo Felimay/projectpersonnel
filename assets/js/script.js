@@ -1,3 +1,11 @@
+// CODE ajoutée par moi
+function refresh() {
+  
+  location.reload(true);
+}
+// 
+
+
 class Question {
     constructor(text, choices, answer) {
       this.text = text;
@@ -12,10 +20,10 @@ class Question {
     
     new Question("Quelle est la Capitale de l'Autriche", ["Saint-Victoire", "Venise", "Vienne", "Varsovie"], "Vienne"),
     new Question("Laquel de ces villes ne se trouvent pas en France", ["Strasbourg", "Aix-La-Chapelle", "Mulhouse", "Die"], "Aix-La-Chapelle"),
-    new Question("Quelle est le language de programation le plus populiare?", ["Python", "Javascript", "Assembly", "C++", "C#"], "test1"),
-    new Question("Quelle est le bon test?", ["test1", "test2", "test3", "test4"], "test4"),
-    new Question("Quelle est le bon test?", ["test1", "test2", "test3", "test4"], "test3"),
-    new Question("Quelle est le bon test?", ["test1", "test2", "test3", "test4"], "test2")
+    new Question("Quelle est le language de programation le plus populiare?", ["Python", "Javascript", "Assembly", "C++", "C#"], "Python"),
+    new Question("A qui appartient la société automible Tesla?", ["Nicholas Tesla", "Mark Zuckerberg", "Elon Musk", "Jill Gates"], "Elon Musk"),
+    new Question("Quelle est le nouveau nom pour Asbestos?", ["Val-Des-Sources", "Amiante Mines", "Val-Jalbert", "Vallée Des Sources"], "Val-Des-Sources"),
+    new Question("Quelle secteur est souvent en grêve?", ["Les ouvrier", "Les travileur Hydro-Québec", "Le secteur publique", "Le secteur privée", "les étudiant" , "Les utlisateur de PopOs"], "Le secteur publique")
   ];
   
   class Quiz {
@@ -29,7 +37,20 @@ class Question {
     }
     guess(answer) {
       if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
+        // ajout code
+        if (this.questions[0].isCorrectAnswer(answer)) {
+        this.score = this.score + 2
+        }
+        if (this.questions[1].isCorrectAnswer(answer)) {
+          this.score = this.score + 1
+        }
+        else {
         this.score++;
+        }
+        //
+      }
+      else {
+        alert("Mauvaise Réponse")
       }
       this.currentQuestionIndex++;
     }
@@ -47,7 +68,7 @@ class Question {
       endQuizHTML = `
         <h1>Quiz terminé !</h1>
         <h3> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>
-        <button id="refresh" class="refresh">
+        <button onclick="refresh()" id="refresh" class="refresh">
         <p>Ressayez</p>
       </button>`;
       this.elementShown("quiz", endQuizHTML);
@@ -89,3 +110,5 @@ class Question {
   // Create Quiz
   let quiz = new Quiz(questions);
   quizApp();
+
+
