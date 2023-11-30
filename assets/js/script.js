@@ -1,4 +1,4 @@
-// CODE ajoutée par moi.
+// Fonction qui sert a recharger une page.
 function refresh() {
   
   location.reload(true);
@@ -37,7 +37,7 @@ class Question {
     }
     guess(answer) {
       if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
-        // ajout code
+        // Ajoute des point différent pour une question spécifique.
         if (this.questions[0].isCorrectAnswer(answer)) {
         this.score = this.score + 2
         }
@@ -49,7 +49,7 @@ class Question {
         }
         //
       }
-      else {
+      else { // Dit au joueur qu'il s'agit d'une mauvais réponse sous forme d'alerte
         alert("Mauvaise Réponse")
       }
       this.currentQuestionIndex++;
@@ -64,11 +64,11 @@ class Question {
       let element = document.getElementById(id);
       element.innerHTML = text;
     },
-    endQuiz: function() {
+    endQuiz: function() { // j'ai ajouté un bouton qui sert a déclancher la fonction refresh
       endQuizHTML = `
         <h1>Quiz terminé !</h1>
         <h3> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>
-        <button onclick="refresh()" id="refresh" class="refresh">
+        <button onclick="refresh()" id="refresh" class="refresh"> 
         <p>Ressayez</p>
       </button>`;
       this.elementShown("quiz", endQuizHTML);
